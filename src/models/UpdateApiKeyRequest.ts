@@ -2,7 +2,9 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-export type CreateEnvTypeRequest = {
-    name: string;
+export type UpdateApiKeyRequest = {
+    description?: string;
+    is_active?: boolean;
+    last_used_at?: string;
 };
 

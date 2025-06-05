@@ -9,9 +9,9 @@ import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class AccessService {
     constructor(public readonly httpRequest: BaseHttpRequest) {}
     /**
-     * Create CLI Login URL
+     * Initiate CLI Login
      * Generate authentication URL for CLI login
-     * @returns LoginUrlResponse CLI login URL created successfully
+     * @returns LoginUrlResponse CLI login initiated successfully.
      * @throws ApiError
      */
     public createCliLogin(): CancelablePromise<LoginUrlResponse> {
@@ -19,28 +19,6 @@ export class AccessService {
             method: 'GET',
             url: '/api/access/cli',
             errors: {
-                500: `Internal server error`,
-            },
-        });
-    }
-    /**
-     * CLI Login Callback
-     * Handle CLI login callback from Auth0
-     * @param code
-     * @returns void
-     * @throws ApiError
-     */
-    public callbackCliLogin(
-        code: string,
-    ): CancelablePromise<void> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/access/cli/callback',
-            query: {
-                'code': code,
-            },
-            errors: {
-                302: `Redirect with authentication token`,
                 500: `Internal server error`,
             },
         });

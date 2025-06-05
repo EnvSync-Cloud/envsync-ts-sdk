@@ -2,8 +2,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-export type UpdateEnvTypeRequest = {
-    id: string;
+export type CreateApiKeyRequest = {
     name: string;
+    description?: string;
 };
 
