@@ -16,8 +16,8 @@ export class AuditLogsService {
      * @throws ApiError
      */
     public getAuditLogs(
-        page: number = 1,
-        perPage: number = 20,
+        page: string = '1',
+        perPage: string = '20',
     ): CancelablePromise<GetAuditLogsResponse> {
         return this.httpRequest.request({
             method: 'GET',

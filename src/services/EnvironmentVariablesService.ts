@@ -79,31 +79,6 @@ export class EnvironmentVariablesService {
         });
     }
     /**
-     * Update Environment Variable
-     * Update an existing environment variable
-     * @param key
-     * @param requestBody
-     * @returns EnvResponse Environment variable updated successfully
-     * @throws ApiError
-     */
-    public updateEnv(
-        key: string,
-        requestBody?: UpdateEnvRequest,
-    ): CancelablePromise<EnvResponse> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/env/{key}',
-            path: {
-                'key': key,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-            errors: {
-                500: `Internal server error`,
-            },
-        });
-    }
-    /**
      * Create Environment Variable
      * Create a new environment variable
      * @param requestBody
@@ -136,6 +111,51 @@ export class EnvironmentVariablesService {
         return this.httpRequest.request({
             method: 'PUT',
             url: '/api/env/batch',
+            body: requestBody,
+            mediaType: 'application/json',
+            errors: {
+                500: `Internal server error`,
+            },
+        });
+    }
+    /**
+     * Batch Update Environment Variables
+     * Update multiple environment variables in a single request
+     * @param requestBody
+     * @returns EnvsResponse Environment variables updated successfully
+     * @throws ApiError
+     */
+    public batchUpdateEnvs(
+        requestBody?: BatchCreateEnvsRequest,
+    ): CancelablePromise<EnvsResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/env/batch',
+            body: requestBody,
+            mediaType: 'application/json',
+            errors: {
+                500: `Internal server error`,
+            },
+        });
+    }
+    /**
+     * Update Environment Variable
+     * Update an existing environment variable
+     * @param key
+     * @param requestBody
+     * @returns EnvResponse Environment variable updated successfully
+     * @throws ApiError
+     */
+    public updateEnv(
+        key: string,
+        requestBody?: UpdateEnvRequest,
+    ): CancelablePromise<EnvResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/env/i/{key}',
+            path: {
+                'key': key,
+            },
             body: requestBody,
             mediaType: 'application/json',
             errors: {

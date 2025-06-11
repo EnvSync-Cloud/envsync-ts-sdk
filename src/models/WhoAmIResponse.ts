@@ -2,6 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { RoleResponse } from './RoleResponse';
 export type WhoAmIResponse = {
     user: {
         id: string;
@@ -25,5 +26,6 @@ export type WhoAmIResponse = {
         created_at: string;
         updated_at: string;
     };
+    role: RoleResponse;
 };
 

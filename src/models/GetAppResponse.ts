@@ -3,14 +3,12 @@
 /* tslint:disable */
 /* eslint-disable */
 export type GetAppResponse = {
-    app: {
-        id: string;
-        name: string;
-        description: string;
-        metadata: Record<string, any>;
-        org_id: string;
-        created_at: string;
-        updated_at: string;
-    };
+    id: string;
+    name: string;
+    description: string;
+    metadata: Record<string, any>;
+    org_id: string;
+    created_at: string;
+    updated_at: string;
 };
 

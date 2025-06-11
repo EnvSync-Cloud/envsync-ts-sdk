@@ -12,6 +12,7 @@ import { AuditLogsService } from './services/AuditLogsService';
 import { AuthenticationService } from './services/AuthenticationService';
 import { EnvironmentTypesService } from './services/EnvironmentTypesService';
 import { EnvironmentVariablesService } from './services/EnvironmentVariablesService';
+import { FileUploadService } from './services/FileUploadService';
 import { OnboardingService } from './services/OnboardingService';
 import { OrganizationsService } from './services/OrganizationsService';
 import { RolesService } from './services/RolesService';
@@ -25,6 +26,7 @@ export class EnvSyncAPISDK {
     public readonly authentication: AuthenticationService;
     public readonly environmentTypes: EnvironmentTypesService;
     public readonly environmentVariables: EnvironmentVariablesService;
+    public readonly fileUpload: FileUploadService;
     public readonly onboarding: OnboardingService;
     public readonly organizations: OrganizationsService;
     public readonly roles: RolesService;
@@ -33,7 +35,7 @@ export class EnvSyncAPISDK {
     constructor(config?: Partial<OpenAPIConfig>, HttpRequest: HttpRequestConstructor = FetchHttpRequest) {
         this.request = new HttpRequest({
             BASE: config?.BASE ?? 'http://localhost:8600',
-            VERSION: config?.VERSION ?? '0.2.0',
+            VERSION: config?.VERSION ?? '0.2.2',
             WITH_CREDENTIALS: config?.WITH_CREDENTIALS ?? false,
             CREDENTIALS: config?.CREDENTIALS ?? 'include',
             TOKEN: config?.TOKEN,
@@ -49,6 +51,7 @@ export class EnvSyncAPISDK {
         this.authentication = new AuthenticationService(this.request);
         this.environmentTypes = new EnvironmentTypesService(this.request);
         this.environmentVariables = new EnvironmentVariablesService(this.request);
+        this.fileUpload = new FileUploadService(this.request);
         this.onboarding = new OnboardingService(this.request);
         this.organizations = new OrganizationsService(this.request);
         this.roles = new RolesService(this.request);

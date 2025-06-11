@@ -2,15 +2,12 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-export type GetAppsResponse = {
-    apps: Array<{
-        id: string;
-        name: string;
-        description: string;
-        metadata: Record<string, any>;
-        org_id: string;
-        created_at: string;
-        updated_at: string;
-    }>;
-};
-
+export type GetAppsResponse = Array<{
+    id: string;
+    name: string;
+    description: string;
+    metadata: Record<string, any>;
+    org_id: string;
+    created_at: string;
+    updated_at: string;
+}>;
