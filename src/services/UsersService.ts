@@ -2,7 +2,6 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { UpdatePasswordRequest } from '../models/UpdatePasswordRequest';
 import type { UpdateRoleRequest } from '../models/UpdateRoleRequest';
 import type { UpdateUserRequest } from '../models/UpdateUserRequest';
 import type { UserResponse } from '../models/UserResponse';
@@ -122,13 +121,11 @@ export class UsersService {
      * Update User Password
      * Update a user's password (Admin only)
      * @param id
-     * @param requestBody
      * @returns UserResponse Password update request sent successfully
      * @throws ApiError
      */
     public updatePassword(
         id: string,
-        requestBody?: UpdatePasswordRequest,
     ): CancelablePromise<UserResponse> {
         return this.httpRequest.request({
             method: 'PATCH',
@@ -136,8 +133,6 @@ export class UsersService {
             path: {
                 'id': id,
             },
-            body: requestBody,
-            mediaType: 'application/json',
             errors: {
                 500: `Internal server error`,
             },

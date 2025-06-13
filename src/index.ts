@@ -53,7 +53,6 @@ export type { UpdateAppRequest } from './models/UpdateAppRequest';
 export type { UpdateAppResponse } from './models/UpdateAppResponse';
 export type { UpdateEnvRequest } from './models/UpdateEnvRequest';
 export type { UpdateOrgRequest } from './models/UpdateOrgRequest';
-export type { UpdatePasswordRequest } from './models/UpdatePasswordRequest';
 export type { UpdateRoleRequest } from './models/UpdateRoleRequest';
 export type { UpdateUserInviteRequest } from './models/UpdateUserInviteRequest';
 export type { UpdateUserInviteResponse } from './models/UpdateUserInviteResponse';
