@@ -2,7 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { GetAuditLogsResponse } from '../models/GetAuditLogsResponse';
+import type { GetAuditLogsResponseWrapper } from '../models/GetAuditLogsResponseWrapper';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class AuditLogsService {
@@ -12,13 +12,13 @@ export class AuditLogsService {
      * Retrieve audit logs for the organization with pagination
      * @param page
      * @param perPage
-     * @returns GetAuditLogsResponse Audit logs retrieved successfully
+     * @returns GetAuditLogsResponseWrapper Audit logs retrieved successfully
      * @throws ApiError
      */
     public getAuditLogs(
         page: string = '1',
         perPage: string = '20',
-    ): CancelablePromise<GetAuditLogsResponse> {
+    ): CancelablePromise<GetAuditLogsResponseWrapper> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/audit_log',

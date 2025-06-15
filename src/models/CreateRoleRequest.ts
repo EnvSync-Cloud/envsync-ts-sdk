@@ -10,5 +10,6 @@ export type CreateRoleRequest = {
     have_billing_options: boolean;
     have_webhook_access: boolean;
     is_admin: boolean;
+    color?: string;
 };
 

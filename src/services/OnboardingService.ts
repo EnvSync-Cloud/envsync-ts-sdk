@@ -177,6 +177,21 @@ export class OnboardingService {
         });
     }
     /**
+     * Get All User Invites
+     * Get all user invites
+     * @returns GetUserInviteByTokenResponse User invites retrieved successfully
+     * @throws ApiError
+     */
+    public getAllUserInvites(): CancelablePromise<GetUserInviteByTokenResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/onboarding/user',
+            errors: {
+                500: `Internal server error`,
+            },
+        });
+    }
+    /**
      * Delete User Invite
      * Delete user invite
      * @param inviteId

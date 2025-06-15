@@ -8,6 +8,14 @@ export type GetAppResponse = {
     description: string;
     metadata: Record<string, any>;
     org_id: string;
+    envCount: number;
+    env_types: Array<{
+        id: string;
+        name: string;
+        is_default: boolean;
+        is_protected: boolean;
+        color: string;
+    }>;
     created_at: string;
     updated_at: string;
 };

@@ -8,6 +8,7 @@ export type GetAuditLogsResponse = Array<{
     org_id: string;
     user_id: string;
     details: string;
+    message: string;
     created_at: string;
     updated_at: string;
 }>;
