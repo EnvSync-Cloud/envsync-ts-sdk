@@ -5,6 +5,8 @@
 export type CreateAppRequest = {
     name: string;
     description: string;
+    enable_secrets?: boolean;
+    public_key?: string;
     metadata?: Record<string, any>;
 };
 

@@ -3,6 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { BatchCreateEnvsRequest } from '../models/BatchCreateEnvsRequest';
+import type { BatchDeleteEnvsRequest } from '../models/BatchDeleteEnvsRequest';
+import type { BatchEnvsResponse } from '../models/BatchEnvsResponse';
 import type { CreateEnvRequest } from '../models/CreateEnvRequest';
 import type { DeleteEnvRequest } from '../models/DeleteEnvRequest';
 import type { EnvResponse } from '../models/EnvResponse';
@@ -67,7 +69,32 @@ export class EnvironmentVariablesService {
     ): CancelablePromise<EnvResponse> {
         return this.httpRequest.request({
             method: 'POST',
-            url: '/api/env/{key}',
+            url: '/api/env/i/{key}',
+            path: {
+                'key': key,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+            errors: {
+                500: `Internal server error`,
+            },
+        });
+    }
+    /**
+     * Update Environment Variable
+     * Update an existing environment variable
+     * @param key
+     * @param requestBody
+     * @returns EnvResponse Environment variable updated successfully
+     * @throws ApiError
+     */
+    public updateEnv(
+        key: string,
+        requestBody?: UpdateEnvRequest,
+    ): CancelablePromise<EnvResponse> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/env/i/{key}',
             path: {
                 'key': key,
             },
@@ -102,12 +129,12 @@ export class EnvironmentVariablesService {
      * Batch Create Environment Variables
      * Create multiple environment variables in a single request
      * @param requestBody
-     * @returns EnvsResponse Environment variables created successfully
+     * @returns BatchEnvsResponse Environment variables created successfully
      * @throws ApiError
      */
     public batchCreateEnvs(
         requestBody?: BatchCreateEnvsRequest,
-    ): CancelablePromise<EnvsResponse> {
+    ): CancelablePromise<BatchEnvsResponse> {
         return this.httpRequest.request({
             method: 'PUT',
             url: '/api/env/batch',
@@ -122,12 +149,12 @@ export class EnvironmentVariablesService {
      * Batch Update Environment Variables
      * Update multiple environment variables in a single request
      * @param requestBody
-     * @returns EnvsResponse Environment variables updated successfully
+     * @returns BatchEnvsResponse Environment variables updated successfully
      * @throws ApiError
      */
     public batchUpdateEnvs(
         requestBody?: BatchCreateEnvsRequest,
-    ): CancelablePromise<EnvsResponse> {
+    ): CancelablePromise<BatchEnvsResponse> {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/env/batch',
@@ -139,23 +166,18 @@ export class EnvironmentVariablesService {
         });
     }
     /**
-     * Update Environment Variable
-     * Update an existing environment variable
-     * @param key
+     * Batch Delete Environment Variables
+     * Delete multiple environment variables in a single request
      * @param requestBody
-     * @returns EnvResponse Environment variable updated successfully
+     * @returns BatchEnvsResponse Environment variables deleted successfully
      * @throws ApiError
      */
-    public updateEnv(
-        key: string,
-        requestBody?: UpdateEnvRequest,
-    ): CancelablePromise<EnvResponse> {
+    public deleteBatchEnv(
+        requestBody?: BatchDeleteEnvsRequest,
+    ): CancelablePromise<BatchEnvsResponse> {
         return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/env/i/{key}',
-            path: {
-                'key': key,
-            },
+            method: 'DELETE',
+            url: '/api/env/batch',
             body: requestBody,
             mediaType: 'application/json',
             errors: {

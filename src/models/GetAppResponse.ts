@@ -7,8 +7,12 @@ export type GetAppResponse = {
     name: string;
     description: string;
     metadata: Record<string, any>;
+    enable_secrets: boolean;
+    is_managed_secret: boolean;
+    public_key?: string;
     org_id: string;
     envCount: number;
+    secretCount: number;
     env_types: Array<{
         id: string;
         name: string;

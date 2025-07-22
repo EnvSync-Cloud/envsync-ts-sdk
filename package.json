@@ -22,7 +22,7 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "openapi": "openapi",
-    "generate": "bun run generate:local",
+    "generate": "bun run generate:local && bun run build && bun publish",
     "generate:local": "bun run scripts/gen.ts"
   },
   "devDependencies": {
@@ -33,7 +33,7 @@
   "peerDependencies": {
     "typescript": "^5"
   },
-  "version": "0.2.4",
+  "version": "0.3.7",
   "publishConfig": {
     "access": "public"
   }
